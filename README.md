@@ -1,2 +1,2 @@
-# lua_dynamicmodule_nginx
+# lua_dynamic_module_nginx
 Adding Lua to Nginx
