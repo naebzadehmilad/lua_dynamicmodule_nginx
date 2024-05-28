@@ -16,6 +16,8 @@ LUA_RESTY_LRUCACHE=https://github.com/openresty/lua-resty-lrucache.git
 #NDK_URL=https://github.com/simpl/ngx_devel_kit/archive/v0.3.1.tar.gz
 #NDK_DIR=ngx_devel_kit-0.3.1
 
+export LUAJIT_LIB=/usr/local/lib/lua && export LUAJIT_INC=/usr/local/include/luajit-2.1
+
 # Download Lua Nginx Module
 if [ ! -f "$LUA_VERSION" ]; then
     wget $LUA_URL
@@ -44,8 +46,8 @@ mkdir -p /etc/nginx/lua/resty
 cp -r ./lua-resty-core/lib/resty/* /etc/nginx/lua/resty/
 cp -r ./lua-resty-lrucache/lib/resty/lrucache.lua /etc/nginx/lua/resty/
 
-echo -e 'load_module modules/ngx_http_lua_module.so;\n'
-echo -e 'load_module modules/ngx_http_ndk_module.so;\n'
+echo -e '\nload_module modules/ngx_http_lua_module.so;\n'
+#echo -e 'load_module modules/ngx_http_ndk_module.so;\n'
 echo -e "\nPlease add the following directives to the http block in your nginx.conf file:\n"
 echo 'lua_package_path "/etc/nginx/lua/?.lua;;";'
 echo 'lua_socket_timeout 1000ms;'
