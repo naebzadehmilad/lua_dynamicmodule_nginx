@@ -16,12 +16,12 @@ luarocks install lua-resty-http || handle_error "Failed to install lua-resty-htt
 LUAJIT_VERSION=luajit2
 LUAJIT_URL=https://github.com/openresty/$LUAJIT_VERSION.git
 LUAJIT_DIR=$LUAJIT_VERSION
-LUA_VERSION=v0.10.15.tar.gz
+LUA_VERSION=v0.10.27.tar.gz
 LUA_URL=https://github.com/openresty/lua-nginx-module/archive/$LUA_VERSION
-LUA_DIR=lua-nginx-module-0.10.15
-NGINX_VERSION=nginx-1.24.0.tar.gz
+LUA_DIR=lua-nginx-module-0.10.27
+NGINX_VERSION=nginx-1.25.0.tar.gz
 NGINX_URL=http://nginx.org/download/$NGINX_VERSION
-NGINX_DIR=nginx-1.24.0
+NGINX_DIR=nginx-1.25.0
 PCRE_VERSION=pcre-8.44.tar.gz
 PCRE_URL=https://sourceforge.net/projects/pcre/files/pcre/8.44/pcre-8.44.tar.gz/download
 PCRE_DIR=pcre-8.44
