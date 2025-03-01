@@ -16,9 +16,9 @@ luarocks install lua-resty-http || handle_error "Failed to install lua-resty-htt
 LUAJIT_VERSION=luajit2
 LUAJIT_URL=https://github.com/openresty/$LUAJIT_VERSION.git
 LUAJIT_DIR=$LUAJIT_VERSION
-LUA_VERSION=v0.10.27.tar.gz
+LUA_VERSION=v0.10.28.tar.gz
 LUA_URL=https://github.com/openresty/lua-nginx-module/archive/$LUA_VERSION
-LUA_DIR=lua-nginx-module-0.10.27
+LUA_DIR=lua-nginx-module-0.10.28
 NGINX_VERSION=nginx-1.25.0.tar.gz
 NGINX_URL=http://nginx.org/download/$NGINX_VERSION
 NGINX_DIR=nginx-1.25.0
