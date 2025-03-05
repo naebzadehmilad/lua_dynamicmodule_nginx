@@ -1,12 +1,12 @@
 #!/bin/bash
 
-LUA_VERSION=v0.10.26.tar.gz
+LUA_VERSION=v0.10.27.tar.gz
 LUA_URL=https://github.com/openresty/lua-nginx-module/archive/$LUA_VERSION
-LUA_DIR=lua-nginx-module-0.10.26
+LUA_DIR=lua-nginx-module-0.10.27
 
-NGINX_VERSION=nginx-1.21.1.tar.gz
+NGINX_VERSION=nginx-1.25.0.tar.gz
 NGINX_URL=http://nginx.org/download/$NGINX_VERSION
-NGINX_DIR=nginx-1.21.1
+NGINX_DIR=nginx-1.25.0
 
 MODULES_PATH=/usr/lib/nginx/modules/
 
