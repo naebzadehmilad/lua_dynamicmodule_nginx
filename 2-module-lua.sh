@@ -1,8 +1,8 @@
 #!/bin/bash
 
-LUA_VERSION=v0.10.27.tar.gz
+LUA_VERSION=v0.10.28.tar.gz
 LUA_URL=https://github.com/openresty/lua-nginx-module/archive/$LUA_VERSION
-LUA_DIR=lua-nginx-module-0.10.27
+LUA_DIR=lua-nginx-module-0.10.28
 
 NGINX_VERSION=nginx-1.25.0.tar.gz
 NGINX_URL=http://nginx.org/download/$NGINX_VERSION
@@ -35,7 +35,7 @@ tar zxvf $NGINX_VERSION
 #tar zxvf $NDK_VERSION
 
 #cd $NGINX_DIR && ./configure --with-compat --add-dynamic-module=../$LUA_DIR --add-dynamic-module=../$NDK_DIR && make modules && cp -r objs/ngx_http_lua_module.so objs/ngx_http_ndk_module.so $MODULES_PATH
-cd $NGINX_DIR && ./configure --with-compat --add-dynamic-module=../$LUA_DIR  && make modules && cp -r objs/ngx_http_lua_module.so $MODULES_PATH
+cd $NGINX_DIR && ./configure --with-ld-opt=-lpcre  --with-compat --add-dynamic-module=../$LUA_DIR  && make modules && cp -r objs/ngx_http_lua_module.so $MODULES_PATH
 
 # Clone Lua-resty-core and Lua-resty-lrucache
 git clone $LUA_RESTY_CORE
