@@ -1,4 +1,4 @@
-apt -y install build-essential libpcre3 libpcre3-dev zlib1g zlib1g-dev libssl-dev git zip unzip libluajit-5.1-dev luarocks || handle_error "Failed to install packages."
+apt -y install build-essential libpcre3 libpcre3-dev zlib1g zlib1g-dev libssl-dev git zip unzip  liblua5.3-dev luarocks || handle_error "Failed to install packages."
 luarocks install lua-resty-core || handle_error "Failed to install lua-resty-core."
 luarocks install lua-resty-http || handle_error "Failed to install lua-resty-http."
 echo "Setting up PCRE symlink..."
