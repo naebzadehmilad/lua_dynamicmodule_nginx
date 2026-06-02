@@ -26,6 +26,8 @@ ETC_MODULES_PATH="/etc/nginx/modules"
 LUA_LIB_PATH="/etc/nginx/lua"
 LUA_RESTY_PATH="${LUA_LIB_PATH}/resty"
 
+LUA_RESTY_CORE_VERSION="v0.1.32R1"
+LUA_RESTY_LRUCACHE_VERSION="v0.15"
 LUA_RESTY_CORE="https://github.com/openresty/lua-resty-core.git"
 LUA_RESTY_LRUCACHE="https://github.com/openresty/lua-resty-lrucache.git"
 
@@ -106,10 +108,24 @@ sudo cp -f "$MODULES_PATH/ngx_http_lua_module.so" "$ETC_MODULES_PATH/" || { echo
 
 cd ..
 
-[ -d lua-resty-core ] || git clone "$LUA_RESTY_CORE"
-[ -d lua-resty-lrucache ] || git clone "$LUA_RESTY_LRUCACHE"
+if [ -d lua-resty-core/.git ]; then
+  git -C lua-resty-core fetch --tags
+  git -C lua-resty-core checkout "$LUA_RESTY_CORE_VERSION"
+else
+  rm -rf lua-resty-core
+  git clone --branch "$LUA_RESTY_CORE_VERSION" --depth 1 "$LUA_RESTY_CORE"
+fi
+
+if [ -d lua-resty-lrucache/.git ]; then
+  git -C lua-resty-lrucache fetch --tags
+  git -C lua-resty-lrucache checkout "$LUA_RESTY_LRUCACHE_VERSION"
+else
+  rm -rf lua-resty-lrucache
+  git clone --branch "$LUA_RESTY_LRUCACHE_VERSION" --depth 1 "$LUA_RESTY_LRUCACHE"
+fi
 
 sudo mkdir -p "$LUA_RESTY_PATH"
+sudo rm -rf "$LUA_RESTY_PATH/core" "$LUA_RESTY_PATH/core.lua" "$LUA_RESTY_PATH/lrucache.lua" "$LUA_RESTY_PATH/lrucache"
 sudo cp -r lua-resty-core/lib/resty/* "$LUA_RESTY_PATH/" || { echo "Failed to copy lua-resty-core"; exit 1; }
 sudo cp -f lua-resty-lrucache/lib/resty/lrucache.lua "$LUA_RESTY_PATH/" || { echo "Failed to copy lrucache"; exit 1; }
 
