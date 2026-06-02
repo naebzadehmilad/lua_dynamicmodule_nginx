@@ -29,7 +29,6 @@ apt -y install \
   zip \
   zlib1g-dev
 
-luarocks install lua-resty-core
 luarocks install lua-resty-http
 
 ldconfig
